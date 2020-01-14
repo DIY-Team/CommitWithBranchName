@@ -6,7 +6,9 @@ For example, lets say the project abbrevation on JIRA is MYPROJ. Its ticket woul
 
 # Installation
 `git clone https://github.com/v-i-s-h-a-l/CommitWithBranchName/`
+
 `cd CommitWithBranchName`
+
 `sh install.sh`
 
 
