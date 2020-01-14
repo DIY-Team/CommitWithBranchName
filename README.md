@@ -18,6 +18,7 @@ The command line name of this tool has been kept vcommit. It is advised to `git 
 
 If you want to name the tool your way instead of vcommit then feel free to change it in the `install.sh` script.
 
+Examples:
 
 `-> MyProject git: (MYPROJ-123) vcommit "update readme to describe usage"`
 
