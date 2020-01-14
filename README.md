@@ -5,15 +5,15 @@ Any other environment that has such functionality can use this.
 For example, lets say the project abbrevation on JIRA is MYPROJ. Its ticket would have convention like MYPROJ-123. When a branch is created related to that ticket in Bitbucket then by having commits such as: `MYPROJ-123 initial commit` would link that commit to the ticket. You can also navigate from bitbucket commit link to the JIRA ticket directly if the commit is in this format.
 
 # Installation
-Clone the repo to your machine:
+1. Clone the repo to your machine:
 
 `git clone https://github.com/v-i-s-h-a-l/CommitWithBranchName/`
 
-checkout the repository folder:
+2. checkout the repository folder:
 
 `cd CommitWithBranchName`
 
-run the install script:
+3. run the install script:
 
 `sh install.sh`
 
