@@ -13,6 +13,12 @@ For example, lets say the project abbrevation on JIRA is MYPROJ. Its ticket woul
 
 
 # Usage
+
+The command line name of this tool has been kept vcommit. It is advised to `git add` your changes that need to be committed. Then type the command: `vcommit <message>`, without the branch name.
+
+If you want to name the tool your way instead of vcommit then feel free to change it in the `install.sh` script.
+
+
 `-> MyProject git: (MYPROJ-123) vcommit "update readme to describe usage"`
 
 Quotes are not necessary in the commit message:
