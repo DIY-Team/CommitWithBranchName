@@ -14,6 +14,8 @@ For example, lets say the project abbrevation on JIRA is MYPROJ. Its ticket woul
 `-> MyProject git: (MYPROJ-123) vcommit "update readme to describe usage"`
 
 Quotes are not necessary in the commit message:
-``` -> CommitWithBranchName git:(master) ✗ vcommit add committing functionality
+``` 
+-> CommitWithBranchName git:(master) ✗ vcommit add committing functionality
 [master 4996cf0] master add committing functionality
- 1 file changed, 6 insertions(+), 3 deletions(-)```
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+ ```
