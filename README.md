@@ -5,9 +5,15 @@ Any other environment that has such functionality can use this.
 For example, lets say the project abbrevation on JIRA is MYPROJ. Its ticket would have convention like MYPROJ-123. When a branch is created related to that ticket in Bitbucket then by having commits such as: `MYPROJ-123 initial commit` would link that commit to the ticket. You can also navigate from bitbucket commit link to the JIRA ticket directly if the commit is in this format.
 
 # Installation
+Clone the repo to your machine:
+
 `git clone https://github.com/v-i-s-h-a-l/CommitWithBranchName/`
 
+checkout the repository folder:
+
 `cd CommitWithBranchName`
+
+run the install script:
 
 `sh install.sh`
 
@@ -16,7 +22,6 @@ For example, lets say the project abbrevation on JIRA is MYPROJ. Its ticket woul
 
 The command line name of this tool has been kept vcommit. It is advised to `git add` your changes that need to be committed. Then type the command: `vcommit <message>`, without the branch name.
 
-If you want to name the tool your way instead of vcommit then feel free to change it in the `install.sh` script.
 
 Examples:
 
@@ -29,6 +34,13 @@ Quotes are not necessary in the commit message:
  1 file changed, 6 insertions(+), 3 deletions(-)
  ```
 
+# Name it your way
+
+If you don't like the name vcommit and want it to be something else, then feel free to change it in the `install.sh` script and `sh install.sh`.
+
+# Delete the tool
+
+navigate to the installation localtion `/usr/local/bin` and search for `vcommit` (or whatever name you chose) executable file and delete it.
 
 # References
 for creating a tool: https://www.swiftbysundell.com/articles/building-a-command-line-tool-using-the-swift-package-manager/
