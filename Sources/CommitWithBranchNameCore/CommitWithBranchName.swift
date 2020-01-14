@@ -17,13 +17,11 @@ public final class CommitWithBranchName {
         }
         if CommandLine.argc < 2 {
             let commitMessage = "\(branchName) no message"
-            print("The commit message is: \(commitMessage)")
             print(bash.execute(commandName: "git", arguments: ["commit", "-m", commitMessage]) ?? "")
         } else {
             var message = CommandLine.arguments
             message.remove(at: 0)
             let commitMessage = "\(branchName) \(message.joined(separator: " "))"
-            print("The commit message is: \(commitMessage)")
             print(bash.execute(commandName: "git", arguments: ["commit", "-m", commitMessage]) ?? "")
         }
     }
