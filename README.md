@@ -28,3 +28,8 @@ Quotes are not necessary in the commit message:
 [master 4996cf0] master add committing functionality
  1 file changed, 6 insertions(+), 3 deletions(-)
  ```
+
+
+# References
+for creating a tool: https://www.swiftbysundell.com/articles/building-a-command-line-tool-using-the-swift-package-manager/
+for runnig bash commands from swift script: https://gist.github.com/andreacipriani/8c3af3719da31c8fae2cdfa8c21e17ba
