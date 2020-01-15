@@ -34,6 +34,9 @@ Quotes are not necessary in the commit message:
  1 file changed, 6 insertions(+), 3 deletions(-)
  ```
 
+**Note**: Bitbucket itself allows link detection for different formats of branch names.
+For example, if the branch name is `feature/MYPROJ-123-task-description` then the `MYPROJ-123` part of the commit message would appear as a link (and it redirects to the linked JIRA ticket)
+
 # Name it your way
 
 If you don't like the name vcommit and want it to be something else, then feel free to change it in the `install.sh` script and `sh install.sh`.
