@@ -1,28 +1,59 @@
 import Foundation
+import RunsShellCommand
+
+enum GitError: Error {
+    case noMessage
+    case noBranch
+    
+    var localizedDescription: String {
+        switch self {
+        case .noMessage: return "No commit message provided. Please provide a commit message."
+        case .noBranch: return "Could not identify current working branch. Please, make sure you are working in valid git repo with a valid branch/HEAD"
+        }
+    }
+}
+
+enum Git: AnyShellCommand {
+    case currentBranchName
+    case commit
+    
+    var command: String {
+        get {
+            return "git"
+        }
+        set {}
+    }
+    
+    var defaultArguments: [String] {
+        get {
+            switch self {
+            case .currentBranchName: return ["rev-parse", "--abbrev-ref", "HEAD"]
+            case .commit: return ["commit", "-m"]
+            }
+        }
+        set {}
+    }
+}
 
 public final class CommitWithBranchName {
     private let arguments: [String]
-
+    
     public init(arguments: [String] = CommandLine.arguments) {
         self.arguments = arguments
     }
-
-    //git rev-parse --abbrev-ref HEAD
-
     
     public func run() throws {
-        let bash = Bash()
-        guard let branchName = bash.execute(commandName: "git", arguments: ["rev-parse", "--abbrev-ref", "HEAD"])?.trimmingCharacters(in: NSCharacterSet.newlines) else {
-            return
-        }
         if CommandLine.argc < 2 {
-            let commitMessage = "\(branchName) no message"
-            print(bash.execute(commandName: "git", arguments: ["commit", "-m", commitMessage]) ?? "")
+            throw(GitError.noMessage)
         } else {
-            var message = CommandLine.arguments
-            message.remove(at: 0)
-            let commitMessage = "\(branchName) \(message.joined(separator: " "))"
-            print(bash.execute(commandName: "git", arguments: ["commit", "-m", commitMessage]) ?? "")
+            let commitMessage = Array(CommandLine.arguments[1...]).joined(separator: " ")
+            commit(with: commitMessage)
         }
+    }
+    
+    private func commit(with message: String) {
+        Git.currentBranchName.execute(onSuccess: { branchName in
+            Git.commit.execute(with: [branchName])
+        })
     }
 }
