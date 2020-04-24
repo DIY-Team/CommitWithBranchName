@@ -10,13 +10,11 @@ let package = Package(
         .package(url: "https://github.com/DIY-Team/RunsShellCommand", from: "0.0.1")
     ],
     targets: [
-        .target(
-            name: "CommitWithBranchName",
-            dependencies: ["CommitWithBranchNameCore"]),
+        .target(name: "CommitWithBranchName",
+                dependencies: ["CommitWithBranchNameCore"]),
         .target(name: "CommitWithBranchNameCore",
                 dependencies: ["RunsShellCommand"]),
-        .target(
-            name: "Install",
-            dependencies: ["InstallSwiftScriptCore"])
+        .target(name: "Install",
+                dependencies: ["InstallSwiftScriptCore"])
     ]
 )
