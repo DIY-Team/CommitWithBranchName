@@ -2,27 +2,23 @@ import Foundation
 
 public final class CommitWithBranchName {
     private let arguments: [String]
-
+    
     public init(arguments: [String] = CommandLine.arguments) {
         self.arguments = arguments
     }
-
-    //git rev-parse --abbrev-ref HEAD
-
     
     public func run() throws {
-        let bash = Bash()
-        guard let branchName = bash.execute(commandName: "git", arguments: ["rev-parse", "--abbrev-ref", "HEAD"])?.trimmingCharacters(in: NSCharacterSet.newlines) else {
-            return
-        }
         if CommandLine.argc < 2 {
-            let commitMessage = "\(branchName) no message"
-            print(bash.execute(commandName: "git", arguments: ["commit", "-m", commitMessage]) ?? "")
+            print(GitError.noMessage.localizedDescription)
         } else {
-            var message = CommandLine.arguments
-            message.remove(at: 0)
-            let commitMessage = "\(branchName) \(message.joined(separator: " "))"
-            print(bash.execute(commandName: "git", arguments: ["commit", "-m", commitMessage]) ?? "")
+            let commitMessage = Array(CommandLine.arguments[1...]).joined(separator: " ")
+            commit(with: commitMessage)
         }
+    }
+    
+    private func commit(with message: String) {
+        Git.currentBranchName.execute(onSuccess: { branchName in
+            Git.commit.execute(with: ["\"\(branchName) \(message)\""])
+        })
     }
 }
